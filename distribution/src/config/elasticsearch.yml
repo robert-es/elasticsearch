@@ -14,13 +14,13 @@
 #
 # Use a descriptive name for your cluster:
 #
-#cluster.name: my-application
+cluster.name: robert-es
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
-#node.name: node-1
+node.name: node-1
 #
 # Add custom attributes to the node:
 #
@@ -30,11 +30,10 @@
 #
 # Path to directory where to store the data (separate multiple locations by comma):
 #
-${path.data}
-#
+path.data: /data/elasticsearch/data
 # Path to log files:
 #
-${path.logs}
+path.logs: /data/elasticsearch/logs
 #
 # ----------------------------------- Memory -----------------------------------
 #
@@ -52,11 +51,11 @@ ${path.logs}
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
-#network.host: 192.168.0.1
+network.host: robert-server
 #
 # Set a custom port for HTTP:
 #
-#http.port: 9200
+http.port: 9200
 #
 # For more information, consult the network module documentation.
 #
@@ -65,7 +64,7 @@ ${path.logs}
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-#discovery.zen.ping.unicast.hosts: ["host1", "host2"]
+discovery.zen.ping.unicast.hosts: ["robert-server"]
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of master-eligible nodes / 2 + 1):
 #
@@ -86,3 +85,10 @@ ${path.logs}
 # Require explicit names when deleting indices:
 #
 #action.destructive_requires_name: true
+
+node.master: true
+node.data: true
+transport.tcp.port: 9300
+cluster.routing.allocation.disk.watermark.low: 93%
+cluster.routing.allocation.disk.watermark.high: 95%
+cluster.routing.allocation.disk.watermark.flood_stage: 95%

@@ -78,7 +78,9 @@ dependencies {
   compile "org.elasticsearch:elasticsearch-secure-sm:${version}"
   compile "org.elasticsearch:elasticsearch-x-content:${version}"
 
-  compileOnly project(':libs:plugin-classloader')
+  //更改为编译依赖，否则本地debug 依赖找不到，
+  // 报错：java.lang.NoClassDefFoundError: org/elasticsearch/plugins/ExtendedPluginsClassLoader
+  compile project(':libs:plugin-classloader')
   testRuntime project(':libs:plugin-classloader')
 
   // lucene
