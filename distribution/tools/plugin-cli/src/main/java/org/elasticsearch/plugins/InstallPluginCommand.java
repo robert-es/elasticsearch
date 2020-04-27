@@ -228,7 +228,7 @@ class InstallPluginCommand extends EnvironmentAwareCommand {
 
         Path pluginZip = download(terminal, pluginId, env.tmpFile(), isBatch);
         Path extractedZip = unzip(pluginZip, env.pluginsFile());
-        install(terminal, isBatch, extractedZip, env);
+//        install(terminal, isBatch, extractedZip, env);
     }
 
     Build.Flavor buildFlavor() {
@@ -644,6 +644,8 @@ class InstallPluginCommand extends EnvironmentAwareCommand {
                 // be on the safe side: do not rely on that directories are always extracted
                 // before their children (although this makes sense, but is it guaranteed?)
                 if (!Files.isSymbolicLink(targetFile.getParent())) {
+                    System.out.println(targetFile.getParent());
+                    System.out.println(targetFile.getFileName());
                     Files.createDirectories(targetFile.getParent());
                 }
                 if (entry.isDirectory() == false) {
