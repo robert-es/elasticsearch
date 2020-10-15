@@ -8,18 +8,19 @@ package com.qunhe.es.plugins.util;
 
 import com.qunhe.es.plugins.constant.KvOp;
 import com.qunhe.es.plugins.constant.MergeOp;
+import org.apache.logging.log4j.Logger;
+import org.elasticsearch.common.logging.Loggers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 import static com.qunhe.es.plugins.constant.Const.DEFAULT_SCORE;
 import static com.qunhe.es.plugins.constant.Const.DOC_FIELD_TYPE;
 import static com.qunhe.es.plugins.constant.Const.KEYS;
+import static com.qunhe.es.plugins.constant.Const.SPLIT_SPACE;
 import static com.qunhe.es.plugins.constant.Const.VALUES;
-import static com.qunhe.es.plugins.constant.KvOp.QUERY_VALUE;
 
 /**
  * Function: ${Description}
@@ -28,6 +29,8 @@ import static com.qunhe.es.plugins.constant.KvOp.QUERY_VALUE;
  * @date 2020/4/21
  */
 public class TagMatctUtil {
+    private static final Logger LOG = Loggers.getLogger(TagMatctUtil.class, "[tag-match]");
+
     private final static int ZERO = 0;
     private final static String STRING_TYPE = "string";
     private final static String LONG_TYPE = "long";
@@ -167,6 +170,24 @@ public class TagMatctUtil {
         } else {
             throw new IllegalArgumentException(
                 "unsupported type of parameter [" + DOC_FIELD_TYPE + "]");
+        }
+    }
+
+    /**
+     * 解析fieldType: STRING_LIST 字段
+     */
+    public static void parseStringListField(final String field, final String fieldValue,
+        final List<Object> fieldValues, final List<Float> fieldScores) {
+        String[] valueAndScores = fieldValue.split(SPLIT_SPACE);
+        if (!(valueAndScores.length % 2 == 0)) {
+            LOG.error(field + "字段值错误，字段切割后，数量不是偶数!");
+            return;
+        }
+
+        for (int i = 0; i < valueAndScores.length; i += 2) {
+            fieldValues.add(valueAndScores[i].trim());
+            Float fieldScore = Float.parseFloat(valueAndScores[i + 1].trim());
+            fieldScores.add(fieldScore);
         }
     }
 }

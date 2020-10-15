@@ -14,7 +14,6 @@ import com.qunhe.es.plugins.util.TagMatctUtil;
 import org.apache.logging.log4j.Logger;
 import org.apache.lucene.index.LeafReaderContext;
 import org.elasticsearch.common.logging.Loggers;
-import org.elasticsearch.index.fielddata.IndexFieldData;
 import org.elasticsearch.index.fielddata.ScriptDocValues;
 import org.elasticsearch.script.ScoreScript;
 import org.elasticsearch.search.lookup.SearchLookup;
@@ -29,8 +28,10 @@ import static com.qunhe.es.plugins.constant.Const.DEFAULT_SCORE;
 import static com.qunhe.es.plugins.constant.Const.DOC_FIELD_TYPE;
 import static com.qunhe.es.plugins.constant.Const.FIELD_TYPE;
 import static com.qunhe.es.plugins.constant.Const.SPLIT_SPACE;
+import static com.qunhe.es.plugins.util.LuceneUtil.getPayloadFromIndex;
 import static com.qunhe.es.plugins.util.TagMatctUtil.parseFloat;
 import static com.qunhe.es.plugins.util.TagMatctUtil.parseKvPairs;
+import static com.qunhe.es.plugins.util.TagMatctUtil.parseStringListField;
 
 /**
  * Function: ${Description}
@@ -90,26 +91,26 @@ public class TagMatchScript extends ScoreScript {
 
         List<Float> fieldScores = null;
         List<Object> fieldValues = null;
-        if (FieldType.STRING_LIST.equals(this.fieldType)) {
+        if (FieldType.PAYLOAD.equals(this.fieldType)) {
+            try {
+                fieldScores = new ArrayList<>();
+                fieldValues = new ArrayList<>();
+                getPayloadFromIndex(context.reader(), this.field, fieldValues, fieldScores);
+            } catch (Exception e) {
+                LOG.error(this.field + " 获取去payload失败!" + e.getMessage());
+                return DEFAULT_SCORE;
+            }
+        } else if (FieldType.STRING_LIST.equals(this.fieldType)) {
             ScriptDocValues scriptDocValues = getDoc().get(field);
             if (null == scriptDocValues || scriptDocValues.getValues().size() == 0) {
                 return DEFAULT_SCORE;
             }
 
-            String fieldValue = (String) scriptDocValues.getValues().get(0);
-            String[] valueAndScores = fieldValue.split(SPLIT_SPACE);
-            if (!(valueAndScores.length % 2 == 0)) {
-                LOG.error(field + "字段值错误，字段切割后，数量不是偶数!");
-                return DEFAULT_SCORE;
-            }
-
             fieldScores = new ArrayList<>();
             fieldValues = new ArrayList<>();
-            for (int i = 0; i < valueAndScores.length; i += 2) {
-                fieldValues.add(valueAndScores[i].trim());
-                Float fieldScore = Float.parseFloat(valueAndScores[i + 1].trim());
-                fieldScores.add(fieldScore);
-            }
+            String fieldValue = (String) scriptDocValues.getValues().get(0);
+            parseStringListField(this.field, fieldValue, fieldValues, fieldScores);
+
         } else if (FieldType.LIST_WITH_SCORE.equals(this.fieldType)) {
             SourceLookup sourceLookup = lookup.getLeafSearchLookup(context).source();
             List values = (List) sourceLookup.get(this.field);
@@ -150,8 +151,8 @@ public class TagMatchScript extends ScoreScript {
             kvPairs = parseKvPairs(this.kvOp, keys, values);
         }
 
-        if (!FieldType.STRING_LIST.equals(this.fieldType) && !FieldType.LIST_WITH_SCORE.equals(
-            this.fieldType)) {
+        if (!FieldType.STRING_LIST.equals(this.fieldType) && !FieldType.LIST_WITH_SCORE.equals
+            (this.fieldType) && !FieldType.PAYLOAD.equals(this.fieldType)) {
             switch (this.kvOp) {
             case DOC_VALUE:
             case MIN:

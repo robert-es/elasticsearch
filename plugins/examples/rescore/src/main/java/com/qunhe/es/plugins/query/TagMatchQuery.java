@@ -6,18 +6,25 @@
 
 package com.qunhe.es.plugins.query;
 
+import com.qunhe.es.plugins.constant.FieldType;
 import com.qunhe.es.plugins.constant.KvOp;
 import com.qunhe.es.plugins.constant.MergeOp;
 import com.qunhe.es.plugins.util.CollectionUtils;
 import com.qunhe.es.plugins.util.TagMatctUtil;
 import org.apache.logging.log4j.Logger;
+import org.apache.lucene.analysis.payloads.PayloadHelper;
+import org.apache.lucene.analysis.tokenattributes.PayloadAttribute;
 import org.apache.lucene.index.DocValues;
 import org.apache.lucene.index.DocValuesType;
 import org.apache.lucene.index.FieldInfo;
 import org.apache.lucene.index.LeafReaderContext;
+import org.apache.lucene.index.PostingsEnum;
 import org.apache.lucene.index.SortedNumericDocValues;
 import org.apache.lucene.index.SortedSetDocValues;
 import org.apache.lucene.index.Term;
+import org.apache.lucene.index.Terms;
+import org.apache.lucene.index.TermsEnum;
+import org.apache.lucene.payloads.PayloadSpanUtil;
 import org.apache.lucene.search.ConstantScoreScorer;
 import org.apache.lucene.search.ConstantScoreWeight;
 import org.apache.lucene.search.DocIdSetIterator;
@@ -31,14 +38,15 @@ import org.elasticsearch.common.logging.Loggers;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-import static com.qunhe.es.plugins.constant.Const.DEFAULT_SCORE;
+import static com.qunhe.es.plugins.constant.Const.SPLIT_SPACE;
+import static com.qunhe.es.plugins.util.LuceneUtil.getPayloadFromIndex;
 import static com.qunhe.es.plugins.util.TagMatctUtil.parseKvPairs;
+import static com.qunhe.es.plugins.util.TagMatctUtil.parseStringListField;
 
 /**
  * Function: ${Description}
@@ -49,14 +57,11 @@ import static com.qunhe.es.plugins.util.TagMatctUtil.parseKvPairs;
 public class TagMatchQuery extends Query {
     private static final Logger LOG = Loggers.getLogger(TagMatchQuery.class, "[tag-match]");
 
-    public final static String LIST_STR_TYPE = "string_list";
-    public final static String SPLIT_SPACE = ",";
-
     private List<Long> keys;
     private List<Float> values;
     private String field;
     private String scoreField;
-    private String fieldType;
+    private FieldType fieldType;
     private KvOp kvOp;
     private MergeOp mergeOp;
     private Map<String, Float> kvPairs;
@@ -88,7 +93,7 @@ public class TagMatchQuery extends Query {
         return 31 * classHash() + Objects.hash(field, fieldType, kvOp, mergeOp, keys, values);
     }
 
-    static TagMatchQuery build(final String field, final String scoreField, final String
+    static TagMatchQuery build(final String field, final String scoreField, final FieldType
         fieldType, final KvOp kvOp, MergeOp mergeO, final List<Long> keys,
         final List<Float> values) {
         TagMatchQuery query = new TagMatchQuery();
@@ -127,7 +132,7 @@ public class TagMatchQuery extends Query {
                 }
             };
         } else {
-            RankerWeight rankerWeight = new RankerWeight(field, kvOp, mergeOp, kvPairs);
+            RankerWeight rankerWeight = new RankerWeight(field, fieldType, kvOp, mergeOp, kvPairs);
             return rankerWeight;
         }
     }
@@ -137,14 +142,16 @@ public class TagMatchQuery extends Query {
         private final KvOp kvOp;
         private final MergeOp mergeOp;
         private final Map<String, Float> kvPairs;
+        private FieldType fieldType;
 
-        public RankerWeight(final String field, final KvOp kvOp, final MergeOp mergeOp,
-            Map<String, Float> kvPairs) {
+        public RankerWeight(final String field, final FieldType fieldType, final KvOp kvOp,
+            final MergeOp mergeOp, Map<String, Float> kvPairs) {
             super(TagMatchQuery.this);
             this.field = field;
             this.kvOp = kvOp;
             this.mergeOp = mergeOp;
             this.kvPairs = kvPairs;
+            this.fieldType = fieldType;
         }
 
         @Override
@@ -184,7 +191,8 @@ public class TagMatchQuery extends Query {
         @Override
         public Scorer scorer(final LeafReaderContext context) throws IOException {
             DocIdSetIterator approximation = DocIdSetIterator.all(context.reader().maxDoc());
-            return new RankerScorer(context, approximation, field, kvOp, mergeOp, kvPairs);
+            return new RankerScorer(context, approximation, field, fieldType, kvOp, mergeOp,
+                kvPairs);
         }
 
         @Override
@@ -196,17 +204,20 @@ public class TagMatchQuery extends Query {
             private final LeafReaderContext context;
             private final DocIdSetIterator docIdSetIterator;
             private final String field;
+            private FieldType fieldType;
             private final KvOp kvOp;
             private final MergeOp mergeOp;
             private final Map<String, Float> kvPairs;
 
             public RankerScorer(final LeafReaderContext context,
-                final DocIdSetIterator docIdSetIterator, final String field, final KvOp kvOp,
-                final MergeOp mergeOp, Map<String, Float> kvPairs) {
+                final DocIdSetIterator docIdSetIterator, final String field,
+                final FieldType fieldType, final KvOp kvOp, final MergeOp mergeOp,
+                Map<String, Float> kvPairs) {
                 super(RankerWeight.this);
                 this.context = context;
                 this.docIdSetIterator = docIdSetIterator;
                 this.field = field;
+                this.fieldType = fieldType;
                 this.kvOp = kvOp;
                 this.mergeOp = mergeOp;
                 this.kvPairs = kvPairs;
@@ -222,58 +233,59 @@ public class TagMatchQuery extends Query {
                 List<Object> fieldValues = new ArrayList<>();
                 List<Float> fieldScores = null;
                 int docId = docID();
-                final FieldInfo fieldInfo = context.reader().getFieldInfos().fieldInfo(field);
-                if (null == fieldInfo) {
-                    return 0;
-                }
-                final DocValuesType docValuesType = fieldInfo.getDocValuesType();
-                if (DocValuesType.SORTED_NUMERIC.equals(docValuesType)) {
-                    //数值的list类型
-                    SortedNumericDocValues docValues = DocValues.getSortedNumeric(context.reader(),
-                        field);
-                    if (docValues.advanceExact(docId)) {
-                        int count = docValues.docValueCount();
-                        for (int i = 0; i < count; i++) {
+
+                // 访问倒排表
+                if (FieldType.PAYLOAD.equals(this.fieldType)) {
+                    fieldScores = new ArrayList<>();
+                    getPayloadFromIndex(context.reader(), this.field, fieldValues, fieldScores);
+                } else {
+                    //访问正排表
+                    final FieldInfo fieldInfo = context.reader().getFieldInfos().fieldInfo(field);
+                    if (null == fieldInfo) {
+                        return 0;
+                    }
+                    final DocValuesType docValuesType = fieldInfo.getDocValuesType();
+                    if (DocValuesType.SORTED_NUMERIC.equals(docValuesType)) {
+                        //数值的list类型
+                        SortedNumericDocValues docValues = DocValues.getSortedNumeric(
+                            context.reader(),
+                            field);
+                        if (docValues.advanceExact(docId)) {
+                            int count = docValues.docValueCount();
+                            for (int i = 0; i < count; i++) {
+                                fieldValues.add(docValues.nextValue());
+                            }
+                        }
+                    } else if (DocValuesType.NUMERIC.equals(docValuesType)) {
+                        //单字数值类型
+                        SortedNumericDocValues docValues = DocValues.getSortedNumeric(
+                            context.reader(),
+                            field);
+                        if (docValues.advanceExact(docId)) {
                             fieldValues.add(docValues.nextValue());
                         }
-                    }
-                } else if (DocValuesType.NUMERIC.equals(docValuesType)) {
-                    //单字数值类型
-                    SortedNumericDocValues docValues = DocValues.getSortedNumeric(context.reader(),
-                        field);
-                    if (docValues.advanceExact(docId)) {
-                        fieldValues.add(docValues.nextValue());
-                    }
-                } else if (DocValuesType.SORTED_SET.equals(docValuesType)) {
-                    //字符串类型
-                    StringBuilder fieldValueBuilder = new StringBuilder();
-                    SortedSetDocValues docValues = DocValues.getSortedSet(context.reader(), field);
-                    if (docValues.advanceExact(docId)) {
-                        long ord;
-                        while ((ord = docValues.nextOrd()) != SortedSetDocValues.NO_MORE_ORDS) {
-                            BytesRef bytesRef = docValues.lookupOrd(ord);
-                            fieldValueBuilder.append(bytesRef.utf8ToString());
+                    } else if (DocValuesType.SORTED_SET.equals(docValuesType)) {
+                        //字符串类型
+                        StringBuilder fieldValueBuilder = new StringBuilder();
+                        SortedSetDocValues docValues = DocValues.getSortedSet(context.reader(),
+                            field);
+                        if (docValues.advanceExact(docId)) {
+                            long ord;
+                            while ((ord = docValues.nextOrd()) != SortedSetDocValues.NO_MORE_ORDS) {
+                                BytesRef bytesRef = docValues.lookupOrd(ord);
+                                fieldValueBuilder.append(bytesRef.utf8ToString());
+                            }
                         }
-                    }
-                    String fieldValue = fieldValueBuilder.toString();
-                    if (LIST_STR_TYPE.equals(fieldType)) {
-                        String[] valueAndScores = fieldValue.split(SPLIT_SPACE);
-                        if (!(valueAndScores.length % 2 == 0)) {
-                            LOG.error(field + "字段值错误，字段切割后，数量不是偶数!");
-                            return 0;
-                        }
-
+                        String fieldValue = fieldValueBuilder.toString();
                         fieldScores = new ArrayList<>();
-                        for (int i = 0; i < valueAndScores.length; i += 2) {
-                            fieldValues.add(valueAndScores[i].trim());
-                            Float fieldScore = Float.parseFloat(valueAndScores[i + 1].trim());
-                            fieldScores.add(fieldScore);
+                        // 这里不支持LIST_WITH_SCORE
+                        if (FieldType.STRING_LIST.equals(fieldType)) {
+                            parseStringListField(this.field, fieldValue, fieldValues, fieldScores);
                         }
                     }
                 }
 
                 float score = TagMatctUtil.score(kvPairs, fieldValues, fieldScores, kvOp, mergeOp);
-
 
                 return score;
             }

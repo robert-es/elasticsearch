@@ -1,3 +1,9 @@
+/*
+ * FieldType.java
+ * Copyright 2020 Qunhe Tech, all rights reserved.
+ * Qunhe PROPRIETARY/CONFIDENTIAL, any form of usage is subject to approval.
+ */
+
 package com.qunhe.es.plugins.constant;
 
 import java.util.Locale;
@@ -16,11 +22,12 @@ public enum FieldType {
     LONG,
     INTEGER,
     DOUBLE,
-    FLOAT;
+    FLOAT,
+    PAYLOAD;
 
     public static FieldType fromString(String fieldType) {
         if (null == fieldType || fieldType.length() == 0) {
-            return LONG;
+            throw new IllegalArgumentException("illegal field_type [" + fieldType + "]");
         }
         return valueOf(fieldType.toUpperCase(Locale.ROOT));
     }

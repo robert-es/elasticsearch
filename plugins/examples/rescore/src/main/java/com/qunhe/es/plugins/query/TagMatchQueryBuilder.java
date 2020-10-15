@@ -6,9 +6,9 @@
 
 package com.qunhe.es.plugins.query;
 
+import com.qunhe.es.plugins.constant.FieldType;
 import com.qunhe.es.plugins.constant.KvOp;
 import com.qunhe.es.plugins.constant.MergeOp;
-import org.elasticsearch.common.ParseField;
 import org.elasticsearch.common.io.stream.StreamInput;
 import org.elasticsearch.common.io.stream.StreamOutput;
 import org.elasticsearch.common.xcontent.ConstructingObjectParser;
@@ -27,13 +27,6 @@ import static com.qunhe.es.plugins.constant.Const.KV_OP;
 import static com.qunhe.es.plugins.constant.Const.MERGE_OP;
 import static com.qunhe.es.plugins.constant.Const.SCORE_FIELD;
 import static com.qunhe.es.plugins.constant.Const.VALUES;
-import static com.qunhe.es.plugins.constant.KvOp.AVG;
-import static com.qunhe.es.plugins.constant.KvOp.DOC_VALUE;
-import static com.qunhe.es.plugins.constant.KvOp.MAX;
-import static com.qunhe.es.plugins.constant.KvOp.MIN;
-import static com.qunhe.es.plugins.constant.KvOp.MUL;
-import static com.qunhe.es.plugins.constant.KvOp.SUM;
-import static com.qunhe.es.plugins.query.TagMatchQuery.LIST_STR_TYPE;
 import static org.elasticsearch.common.xcontent.ConstructingObjectParser.constructorArg;
 import static org.elasticsearch.common.xcontent.ConstructingObjectParser.optionalConstructorArg;
 
@@ -50,7 +43,7 @@ public class TagMatchQueryBuilder extends AbstractQueryBuilder<TagMatchQueryBuil
     private List<Float> values;
     private String field;
     private String scoreField;
-    private String fieldType;
+    private FieldType fieldType;
     private KvOp kvOp;
     private MergeOp mergeOp;
 
@@ -65,7 +58,7 @@ public class TagMatchQueryBuilder extends AbstractQueryBuilder<TagMatchQueryBuil
     static {
         PARSER.declareString(constructorArg(), FIELD);
         PARSER.declareString(optionalConstructorArg(), SCORE_FIELD);
-        PARSER.declareString(optionalConstructorArg(), FIELD_TYPE);
+        PARSER.declareString(constructorArg(), FIELD_TYPE);
         PARSER.declareString(constructorArg(), KV_OP);
         PARSER.declareString(constructorArg(), MERGE_OP);
         PARSER.declareLongArray(constructorArg(), KEYS);
@@ -77,13 +70,14 @@ public class TagMatchQueryBuilder extends AbstractQueryBuilder<TagMatchQueryBuil
         String mergeOp, List<Long> keys, List<Float> values) {
         this.field = field;
         this.scoreField = scoreField;
-        this.fieldType = fieldType;
+        this.fieldType = FieldType.fromString(fieldType);
         this.kvOp = KvOp.fromString(kvOp);
         this.mergeOp = MergeOp.fromString(mergeOp);
         this.keys = keys;
         this.values = values;
 
-        if (!LIST_STR_TYPE.equals(this.fieldType)) {
+        if (!FieldType.STRING_LIST.equals(this.fieldType) && !FieldType.LIST_WITH_SCORE.equals(
+            this.fieldType) && !FieldType.PAYLOAD.equals(this.fieldType)) {
             switch (this.kvOp) {
             case DOC_VALUE:
             case MIN:
