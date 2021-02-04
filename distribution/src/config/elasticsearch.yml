@@ -30,11 +30,11 @@
 #
 # Path to directory where to store the data (separate multiple locations by comma):
 #
-${path.data}
+#path.data: /path/to/data
 #
 # Path to log files:
 #
-${path.logs}
+#path.logs: /path/to/logs
 #
 # ----------------------------------- Memory -----------------------------------
 #
@@ -52,7 +52,7 @@ ${path.logs}
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
-#network.host: 192.168.0.1
+#network.host: robert-server
 #
 # Set a custom port for HTTP:
 #
@@ -86,3 +86,9 @@ ${path.logs}
 # Require explicit names when deleting indices:
 #
 #action.destructive_requires_name: true
+node.name: node-1
+network.host: robert-server
+cluster.initial_master_nodes: ["node-1"]
+http.cors.enabled: true
+http.cors.allow-origin: "*"
+

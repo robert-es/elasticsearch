@@ -107,7 +107,7 @@ public class RepositoriesSetupPlugin implements Plugin<Project> {
                 projectPath,
                 url
             );
-            throw new GradleException(message);
+//            throw new GradleException(message);
         }
     }
 

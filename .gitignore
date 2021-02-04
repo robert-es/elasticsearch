@@ -56,3 +56,6 @@ testfixtures_shared/
 
 # These are generated from .ci/jobs.t
 .ci/jobs/
+distribution/src/main/resources/data
+distribution/src/main/resources/logs
+distribution/src/main/resources/data/nodes
