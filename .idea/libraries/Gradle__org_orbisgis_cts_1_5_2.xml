@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.orbisgis:cts:1.5.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.orbisgis/cts/1.5.2/16e55420fe42d18b20f77c00ce726aed5cdaf181/cts-1.5.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.orbisgis/cts/1.5.2/9599670c1031e61648865af0758603fbe692daad/cts-1.5.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.kerby:kerb-crypto:1.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.kerby/kerb-crypto/1.1.1/f0027e417977c41bd97977d680909dd94dba5d9/kerb-crypto-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.kerby/kerb-crypto/1.1.1/92ebcdd1b1acd38528d95a9014513b421499262b/kerb-crypto-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

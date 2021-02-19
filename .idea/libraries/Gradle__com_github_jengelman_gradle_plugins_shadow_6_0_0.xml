@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.jengelman.gradle.plugins:shadow:6.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jengelman.gradle.plugins/shadow/6.0.0/c8f22730dd3067bff8c1d8731742477d60a7ca4a/shadow-6.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.jengelman.gradle.plugins/shadow/6.0.0/840bc061c353ec579036028c9cd7518b087c3bcd/shadow-6.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

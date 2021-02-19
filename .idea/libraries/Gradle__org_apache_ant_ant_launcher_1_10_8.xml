@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.ant:ant-launcher:1.10.8">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-launcher/1.10.8/2ca8688d2dad5694237576db782b37279989614d/ant-launcher-1.10.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.ant/ant-launcher/1.10.8/4b97657eac3e76367d8a3adc6b709b80f6d1d3da/ant-launcher-1.10.8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

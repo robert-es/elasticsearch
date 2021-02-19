@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.kerby:ldap-backend:1.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.kerby/ldap-backend/1.1.1/1df72cfb24945404d5947c4303a9b179bfc78eba/ldap-backend-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.kerby/ldap-backend/1.1.1/554fd3dd32754c97ce9b586249fe660ee039d15e/ldap-backend-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

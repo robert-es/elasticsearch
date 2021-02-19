@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.lucene:lucene-analyzers-morfologik:8.7.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.lucene/lucene-analyzers-morfologik/8.7.0/a18c978ce5719b614445ca8f8075974df91d2631/lucene-analyzers-morfologik-8.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.lucene/lucene-analyzers-morfologik/8.7.0/4538eae91af259457d835c3106ca55455944468d/lucene-analyzers-morfologik-8.7.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

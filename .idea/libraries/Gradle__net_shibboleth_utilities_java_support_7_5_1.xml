@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: net.shibboleth.utilities:java-support:7.5.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.shibboleth.utilities/java-support/7.5.1/c3fecaa141e8f0fff8a14e6800aefa8155c9b3e8/java-support-7.5.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.shibboleth.utilities/java-support/7.5.1/c3d1e19234b0c39938046a4397d5c6e0e6557ec8/java-support-7.5.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

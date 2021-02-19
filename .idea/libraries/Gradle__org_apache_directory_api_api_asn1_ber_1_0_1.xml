@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.directory.api:api-asn1-ber:1.0.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.directory.api/api-asn1-ber/1.0.1/c1a0b6504456dab91fe3012d513a28cc7f22fc97/api-asn1-ber-1.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.directory.api/api-asn1-ber/1.0.1/556f61c88b587b1cca1267c3d2af5f3b0a763d7/api-asn1-ber-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

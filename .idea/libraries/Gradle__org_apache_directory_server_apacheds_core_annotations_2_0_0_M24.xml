@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.directory.server:apacheds-core-annotations:2.0.0-M24">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.directory.server/apacheds-core-annotations/2.0.0-M24/ef20340c41d361f58d1605244c20ed42141f4ee5/apacheds-core-annotations-2.0.0-M24.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.directory.server/apacheds-core-annotations/2.0.0-M24/f69ca21372408ff38c79a8766e1dd85664d38407/apacheds-core-annotations-2.0.0-M24-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

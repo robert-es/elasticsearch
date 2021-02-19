@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.lucene:lucene-analyzers-nori:8.7.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.lucene/lucene-analyzers-nori/8.7.0/3462eaa9b58e995c8e28060bf7ac2b054ca5e44e/lucene-analyzers-nori-8.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.lucene/lucene-analyzers-nori/8.7.0/aeef0f5718bd0db28bb920077ee2b3965b0975df/lucene-analyzers-nori-8.7.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

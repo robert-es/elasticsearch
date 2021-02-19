@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.kerby:kerby-pkix:1.1.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.kerby/kerby-pkix/1.1.1/ee026862c5aab5cf6fef788c25dfd7dd95299cda/kerby-pkix-1.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.kerby/kerby-pkix/1.1.1/72f32f8f5430cbeebe00a9abe7d7427b4ee355bd/kerby-pkix-1.1.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

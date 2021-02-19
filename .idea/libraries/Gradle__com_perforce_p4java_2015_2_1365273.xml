@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.perforce:p4java:2015.2.1365273">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.perforce/p4java/2015.2.1365273/5e6261eba517a79915fe33d2e933d18b9756220c/p4java-2015.2.1365273.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.perforce/p4java/2015.2.1365273/5884a8350f990b0540f62e6301e38852c06183cb/p4java-2015.2.1365273-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

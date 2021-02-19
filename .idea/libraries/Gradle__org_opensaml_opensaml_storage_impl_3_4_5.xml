@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.opensaml:opensaml-storage-impl:3.4.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.opensaml/opensaml-storage-impl/3.4.5/a4b828fe1a9d64953ecdd8a9e00ff31b63ad6ef0/opensaml-storage-impl-3.4.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.opensaml/opensaml-storage-impl/3.4.5/fdad071a398096f2cc0b16f089a3a739aa5275bc/opensaml-storage-impl-3.4.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

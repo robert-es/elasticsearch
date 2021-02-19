@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.avast.gradle:gradle-docker-compose-plugin:0.12.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.avast.gradle/gradle-docker-compose-plugin/0.12.1/64c9d150200cc23e3defac5b341eddb7c73ce9a4/gradle-docker-compose-plugin-0.12.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.avast.gradle/gradle-docker-compose-plugin/0.12.1/6a8bde67351650a9171069dc8c6ec71be92c113f/gradle-docker-compose-plugin-0.12.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

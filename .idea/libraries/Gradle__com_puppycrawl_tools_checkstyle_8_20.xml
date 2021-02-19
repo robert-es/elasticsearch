@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.puppycrawl.tools:checkstyle:8.20">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.puppycrawl.tools/checkstyle/8.20/56a6e77fab16cd315343b28d8fe5809d0a538f64/checkstyle-8.20.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.puppycrawl.tools/checkstyle/8.20/4fc83808f1d9055a6d49ab18e0a8507c1fe49a19/checkstyle-8.20-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

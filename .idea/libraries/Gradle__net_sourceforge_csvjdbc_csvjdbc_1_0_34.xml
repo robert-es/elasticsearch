@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: net.sourceforge.csvjdbc:csvjdbc:1.0.34">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sourceforge.csvjdbc/csvjdbc/1.0.34/d87fb7e506398609852ed4583ea6be00ac584911/csvjdbc-1.0.34.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sourceforge.csvjdbc/csvjdbc/1.0.34/5ba632b01282783444c2c949ce24b57403e09515/csvjdbc-1.0.34-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.bouncycastle:bc-fips:1.0.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bc-fips/1.0.2/4fb5db5f03d00f6a94e43b78d097978190e4abb2/bc-fips-1.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.bouncycastle/bc-fips/1.0.2/721972d2d3bbde9feea235e40b9bc7a02055cf73/bc-fips-1.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

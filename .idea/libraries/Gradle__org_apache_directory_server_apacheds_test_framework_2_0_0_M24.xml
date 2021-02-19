@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.directory.server:apacheds-test-framework:2.0.0-M24">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.directory.server/apacheds-test-framework/2.0.0-M24/ec325f1ca565271a2f96e1a06fdf501aa72b41a0/apacheds-test-framework-2.0.0-M24.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.directory.server/apacheds-test-framework/2.0.0-M24/918b0e15f160e53f2ee060c3142dd3da59aaef98/apacheds-test-framework-2.0.0-M24-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.directory.api:api-ldap-net-mina:1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.directory.api/api-ldap-net-mina/1.0.0/e14540c5629c265999c7b446f3e6eebc5357e0c4/api-ldap-net-mina-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.directory.api/api-ldap-net-mina/1.0.0/400f6c3a3dbeab8c81f65fb2c03b8009dc134fe7/api-ldap-net-mina-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

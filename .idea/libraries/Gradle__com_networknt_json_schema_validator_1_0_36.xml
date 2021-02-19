@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.networknt:json-schema-validator:1.0.36">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.networknt/json-schema-validator/1.0.36/16860c8f702eb5d59133d89022defc71eb24fa08/json-schema-validator-1.0.36.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.networknt/json-schema-validator/1.0.36/f1eac9ff0c631c22c1ebf579d2c493fb3fc78d77/json-schema-validator-1.0.36-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

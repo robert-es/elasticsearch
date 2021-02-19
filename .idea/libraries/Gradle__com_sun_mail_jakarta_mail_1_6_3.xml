@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.sun.mail:jakarta.mail:1.6.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sun.mail/jakarta.mail/1.6.3/787e007e377223bba85a33599d3da416c135f99b/jakarta.mail-1.6.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.sun.mail/jakarta.mail/1.6.3/27536feaaa314c859d290c4b90d8cbf2fa2cc565/jakarta.mail-1.6.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

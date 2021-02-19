@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.directory.api:api-i18n:1.0.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.directory.api/api-i18n/1.0.1/17552ed63c41aa95a9b148d9f01d85e5baf03e6c/api-i18n-1.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.directory.api/api-i18n/1.0.1/8f7c5c5f2113fe579cdc1841115048d16a307819/api-i18n-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

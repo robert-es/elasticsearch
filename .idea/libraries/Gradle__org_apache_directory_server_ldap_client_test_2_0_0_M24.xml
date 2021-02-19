@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.directory.server:ldap-client-test:2.0.0-M24">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.directory.server/ldap-client-test/2.0.0-M24/d1bf9ee1b17f6dfba2a0635f5ef77302f82671ca/ldap-client-test-2.0.0-M24.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.directory.server/ldap-client-test/2.0.0-M24/947e57ebf03444072c77362da55e186df5655c0f/ldap-client-test-2.0.0-M24-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

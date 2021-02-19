@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.orbisgis:h2gis-utilities:1.5.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.orbisgis/h2gis-utilities/1.5.0/2775bff0442d65fe6eda627ee4b6154a7b487ad7/h2gis-utilities-1.5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.orbisgis/h2gis-utilities/1.5.0/6e0e889c540ac402b8141a5225ab51cd5d16ae0f/h2gis-utilities-1.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
