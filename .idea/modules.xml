@@ -134,6 +134,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/plugins/examples/security-authorization-engine/elasticsearch.example-plugins.security-authorization-engine.javaRestTest.iml" filepath="$PROJECT_DIR$/.idea/modules/plugins/examples/security-authorization-engine/elasticsearch.example-plugins.security-authorization-engine.javaRestTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/plugins/examples/security-authorization-engine/elasticsearch.example-plugins.security-authorization-engine.main.iml" filepath="$PROJECT_DIR$/.idea/modules/plugins/examples/security-authorization-engine/elasticsearch.example-plugins.security-authorization-engine.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/plugins/examples/security-authorization-engine/elasticsearch.example-plugins.security-authorization-engine.test.iml" filepath="$PROJECT_DIR$/.idea/modules/plugins/examples/security-authorization-engine/elasticsearch.example-plugins.security-authorization-engine.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/knn/elasticsearch.knn.iml" filepath="$PROJECT_DIR$/.idea/modules/knn/elasticsearch.knn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/knn/elasticsearch.knn.main.iml" filepath="$PROJECT_DIR$/.idea/modules/knn/elasticsearch.knn.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/knn/elasticsearch.knn.test.iml" filepath="$PROJECT_DIR$/.idea/modules/knn/elasticsearch.knn.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/libs/elasticsearch.libs.iml" filepath="$PROJECT_DIR$/.idea/modules/libs/elasticsearch.libs.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/libs/cli/elasticsearch.libs.elasticsearch-cli.iml" filepath="$PROJECT_DIR$/.idea/modules/libs/cli/elasticsearch.libs.elasticsearch-cli.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/libs/cli/elasticsearch.libs.elasticsearch-cli.main.iml" filepath="$PROJECT_DIR$/.idea/modules/libs/cli/elasticsearch.libs.elasticsearch-cli.main.iml" />
@@ -947,6 +950,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/x-pack/transport-client/elasticsearch.x-pack.transport-client.iml" filepath="$PROJECT_DIR$/.idea/modules/x-pack/transport-client/elasticsearch.x-pack.transport-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/x-pack/transport-client/elasticsearch.x-pack.transport-client.main.iml" filepath="$PROJECT_DIR$/.idea/modules/x-pack/transport-client/elasticsearch.x-pack.transport-client.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/x-pack/transport-client/elasticsearch.x-pack.transport-client.test.iml" filepath="$PROJECT_DIR$/.idea/modules/x-pack/transport-client/elasticsearch.x-pack.transport-client.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/knn.iml" filepath="$PROJECT_DIR$/.idea/modules/knn.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/x-pack/plugin/ql/org.elasticsearch.plugin.elasticsearch.x-pack.plugin.ql.test.iml" filepath="$PROJECT_DIR$/.idea/modules/x-pack/plugin/ql/org.elasticsearch.plugin.elasticsearch.x-pack.plugin.ql.test.iml" />
     </modules>
   </component>

@@ -62,6 +62,8 @@
       <module name="elasticsearch.example-plugins.security-authorization-engine.javaRestTest" target="1.8" />
       <module name="elasticsearch.example-plugins.security-authorization-engine.main" target="1.8" />
       <module name="elasticsearch.example-plugins.security-authorization-engine.test" target="1.8" />
+      <module name="elasticsearch.knn.main" target="1.8" />
+      <module name="elasticsearch.knn.test" target="1.8" />
       <module name="elasticsearch.libs.elasticsearch-cli.main" target="1.8" />
       <module name="elasticsearch.libs.elasticsearch-cli.test" target="1.8" />
       <module name="elasticsearch.libs.elasticsearch-core.java11" target="11" />

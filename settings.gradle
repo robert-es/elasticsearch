@@ -138,3 +138,5 @@ if (extraProjects.exists()) {
     addSubProjects('', extraProjectDir)
   }
 }
+include 'knn'
+
